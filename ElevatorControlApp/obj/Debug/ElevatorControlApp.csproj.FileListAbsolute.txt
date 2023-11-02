@@ -1,0 +1,11 @@
+C:\Users\anoj1\source\repos\ElevatorControlApp\ElevatorControlApp\bin\Debug\ElevatorControlApp.exe.config
+C:\Users\anoj1\source\repos\ElevatorControlApp\ElevatorControlApp\bin\Debug\ElevatorControlApp.exe
+C:\Users\anoj1\source\repos\ElevatorControlApp\ElevatorControlApp\bin\Debug\ElevatorControlApp.pdb
+C:\Users\anoj1\source\repos\ElevatorControlApp\ElevatorControlApp\obj\Debug\ElevatorControlApp.csproj.AssemblyReference.cache
+C:\Users\anoj1\source\repos\ElevatorControlApp\ElevatorControlApp\obj\Debug\ElevatorControlApp.MainForm.resources
+C:\Users\anoj1\source\repos\ElevatorControlApp\ElevatorControlApp\obj\Debug\ElevatorControlApp.Properties.Resources.resources
+C:\Users\anoj1\source\repos\ElevatorControlApp\ElevatorControlApp\obj\Debug\ElevatorControlApp.csproj.GenerateResource.cache
+C:\Users\anoj1\source\repos\ElevatorControlApp\ElevatorControlApp\obj\Debug\ElevatorControlApp.csproj.CoreCompileInputs.cache
+C:\Users\anoj1\source\repos\ElevatorControlApp\ElevatorControlApp\obj\Debug\ElevatorControlApp.exe
+C:\Users\anoj1\source\repos\ElevatorControlApp\ElevatorControlApp\obj\Debug\ElevatorControlApp.pdb
+C:\Users\anoj1\source\repos\ElevatorControlApp\ElevatorControlApp\obj\Debug\ElevatorControlApp.Form1.resources
