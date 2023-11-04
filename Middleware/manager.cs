@@ -1,7 +1,4 @@
 ﻿using LiftSystemApp.Helper;
-using LiftSystemApp.Views;
-using System;
-using System.Threading.Tasks;
 
 
 namespace LiftSystemApp.Middleware
