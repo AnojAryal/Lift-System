@@ -60,7 +60,7 @@
             // leftDoor
             // 
             leftDoor.Image = (Image)resources.GetObject("leftDoor.Image");
-            leftDoor.Location = new Point(251, 126);
+            leftDoor.Location = new Point(246, 126);
             leftDoor.Margin = new Padding(4, 5, 4, 5);
             leftDoor.Name = "leftDoor";
             leftDoor.Size = new Size(166, 611);
@@ -72,7 +72,7 @@
             // rightDoor
             // 
             rightDoor.Image = (Image)resources.GetObject("rightDoor.Image");
-            rightDoor.Location = new Point(409, 126);
+            rightDoor.Location = new Point(408, 126);
             rightDoor.Margin = new Padding(4, 5, 4, 5);
             rightDoor.Name = "rightDoor";
             rightDoor.Size = new Size(163, 611);
@@ -142,7 +142,7 @@
             Controls.Add(LiftDesign);
             Margin = new Padding(4, 5, 4, 5);
             Name = "MainDesign";
-            Size = new Size(1150, 837);
+            Size = new Size(1301, 837);
             Load += UserControl1_Load;
             ((System.ComponentModel.ISupportInitialize)LiftDesign).EndInit();
             ((System.ComponentModel.ISupportInitialize)leftDoor).EndInit();
