@@ -1,7 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\Middleware",
+    "\\Database",
+    "\\Properties",
+    "\\Resources",
     "\\Views"
   ],
   "SelectedNode": "\\Views\\MainDesign.cs",

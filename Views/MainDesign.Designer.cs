@@ -84,10 +84,10 @@
             // liftButton
             // 
             liftButton.Image = (Image)resources.GetObject("liftButton.Image");
-            liftButton.Location = new Point(670, 404);
+            liftButton.Location = new Point(670, 399);
             liftButton.Margin = new Padding(4, 5, 4, 5);
             liftButton.Name = "liftButton";
-            liftButton.Size = new Size(69, 70);
+            liftButton.Size = new Size(79, 75);
             liftButton.SizeMode = PictureBoxSizeMode.StretchImage;
             liftButton.TabIndex = 3;
             liftButton.TabStop = false;
@@ -142,7 +142,7 @@
             Controls.Add(LiftDesign);
             Margin = new Padding(4, 5, 4, 5);
             Name = "MainDesign";
-            Size = new Size(1301, 837);
+            Size = new Size(1325, 837);
             Load += UserControl1_Load;
             ((System.ComponentModel.ISupportInitialize)LiftDesign).EndInit();
             ((System.ComponentModel.ISupportInitialize)leftDoor).EndInit();
@@ -168,10 +168,6 @@
         public PictureBox Floor1Button => btnF1;
         public PictureBox Floor2Button => btnF2;
         public PictureBox Indicator => floorDisplay;
-
-
-
-
 
     }
 }
