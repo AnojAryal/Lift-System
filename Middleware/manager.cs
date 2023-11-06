@@ -1,18 +1,27 @@
-﻿using LiftSystemApp.Helper;
-
+﻿using System;
+using System.Threading.Tasks;
+using LiftSystemApp.Database;
+using LiftSystemApp.Enum;
+using LiftSystemApp.Helper;
+using MySqlConnector;
 
 namespace LiftSystemApp.Middleware
 {
-    public class manager
+    public class Manager
     {
         private MainDesign[] controls = new MainDesign[2];
         private bool isMoving = false;
-        
+        private readonly DataAccess dataAcess;
+        private readonly MySqlConnection connection;
 
-        public manager(LiftFloors form1)
+        public Manager(LiftFloors form1, DataAccess dataAccess, MySqlConnection databaseConnection)
         {
             this.controls[0] = form1.GetFloor1;
             this.controls[1] = form1.GetFloor2;
+
+            this.dataAcess = dataAccess ?? throw new ArgumentNullException(nameof(dataAccess));
+            this.connection = databaseConnection ?? throw new ArgumentNullException(nameof(databaseConnection));
+
 
 
             foreach (var item in controls)
@@ -53,10 +62,15 @@ namespace LiftSystemApp.Middleware
                     await MoveLiftUp();
                 };
 
-                LiftState.CurrentFloor = controls[0];
-                LiftState.Status = Enum.LiftStatus.Stopped;
-                LiftState.Direction = Enum.LiftDirection.Up;
+                InitializeElevatorState();
             }
+        }
+
+        private void InitializeElevatorState()
+        {
+            LiftState.CurrentFloor = controls[0];
+            LiftState.Status = LiftStatus.Stopped;
+            LiftState.Direction = LiftDirection.Up;
         }
 
         private async Task MoveLiftUp()
@@ -65,9 +79,10 @@ namespace LiftSystemApp.Middleware
             {
                 LiftState.CurrentFloor.CloseDoor();
             }
-
-            LiftState.Status = Enum.LiftStatus.Moving;
-            LiftState.Direction = Enum.LiftDirection.Up;
+            
+            LiftState.Status = LiftStatus.Moving;
+            dataAcess.ExecuteQuery("INSERT INTO logs (message) VALUES ('Elevator requested on second floor.')");
+            LiftState.Direction = LiftDirection.Up;
 
             foreach (var floor in controls)
             {
@@ -77,7 +92,9 @@ namespace LiftSystemApp.Middleware
             await Task.Delay(3000);
 
             LiftState.CurrentFloor = controls[1];
-            LiftState.Status = Enum.LiftStatus.Stopped;
+            LiftState.Status = LiftStatus.Stopped;
+            dataAcess.ExecuteQuery("INSERT INTO logs (message) VALUES ('Elevator Moving up to second floor.')");
+
 
             await Task.Delay(1000);
 
@@ -87,6 +104,8 @@ namespace LiftSystemApp.Middleware
             }
 
             LiftState.CurrentFloor.openDoor();
+            dataAcess.ExecuteQuery("INSERT INTO logs (message) VALUES ('Elevator Reached to second floor.')");
+
             await Task.Delay(5000);
             LiftState.CurrentFloor.CloseDoor();
         }
@@ -98,8 +117,10 @@ namespace LiftSystemApp.Middleware
                 LiftState.CurrentFloor.CloseDoor();
             }
 
-            LiftState.Status = Enum.LiftStatus.Moving;
-            LiftState.Direction = Enum.LiftDirection.Down;
+            LiftState.Status = LiftStatus.Moving;
+            dataAcess.ExecuteQuery("INSERT INTO logs (message) VALUES ('Elevator requested on first floor.')");
+
+            LiftState.Direction = LiftDirection.Down;
 
             foreach (var floor in controls)
             {
@@ -107,9 +128,10 @@ namespace LiftSystemApp.Middleware
             }
 
             await Task.Delay(3000);
+            dataAcess.ExecuteQuery("INSERT INTO logs (message) VALUES ('Elevator Moving up to first floor.')");
 
             LiftState.CurrentFloor = controls[0];
-            LiftState.Status = Enum.LiftStatus.Stopped;
+            LiftState.Status = LiftStatus.Stopped;
 
             await Task.Delay(1000);
 
@@ -119,6 +141,8 @@ namespace LiftSystemApp.Middleware
             }
 
             LiftState.CurrentFloor.openDoor();
+            dataAcess.ExecuteQuery("INSERT INTO logs (message) VALUES ('Elevator Reached to first floor.')");
+
             await Task.Delay(5000);
             LiftState.CurrentFloor.CloseDoor();
         }

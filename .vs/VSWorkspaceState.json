@@ -2,10 +2,11 @@
   "ExpandedNodes": [
     "",
     "\\Database",
+    "\\Middleware",
     "\\Properties",
     "\\Resources",
     "\\Views"
   ],
-  "SelectedNode": "\\Views\\MainDesign.cs",
+  "SelectedNode": "\\Middleware\\manager.cs",
   "PreviewInSolutionExplorer": false
 }

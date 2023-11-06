@@ -32,6 +32,8 @@ namespace LiftSystemApp
         {
             userControl11 = new Floor1();
             userControl12 = new Floor2();
+            logsButton = new Button();
+            logsDisplay = new ListBox();
             SuspendLayout();
             // 
             // userControl11
@@ -52,18 +54,42 @@ namespace LiftSystemApp
             userControl12.TabIndex = 1;
             userControl12.Load += userControl12_Load_1;
             // 
-            // Form1
+            // logsButton
+            // 
+            logsButton.Location = new Point(1030, 49);
+            logsButton.Name = "logsButton";
+            logsButton.Size = new Size(155, 67);
+            logsButton.TabIndex = 2;
+            logsButton.Text = "Logs Details";
+            logsButton.UseVisualStyleBackColor = true;
+            logsButton.Click += logsButton_Click;
+            // 
+            // logsDisplay
+            // 
+            logsDisplay.FormattingEnabled = true;
+            logsDisplay.HorizontalScrollbar = true;
+            logsDisplay.ItemHeight = 25;
+            logsDisplay.Location = new Point(825, 132);
+            logsDisplay.Name = "logsDisplay";
+            logsDisplay.ScrollAlwaysVisible = true;
+            logsDisplay.Size = new Size(546, 529);
+            logsDisplay.TabIndex = 3;
+            logsDisplay.SelectedIndexChanged += listBox1_SelectedIndexChanged;
+            // 
+            // LiftFloors
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoScroll = true;
-            ClientSize = new Size(1409, 1050);
+            ClientSize = new Size(1480, 1050);
+            Controls.Add(logsDisplay);
+            Controls.Add(logsButton);
             Controls.Add(userControl12);
             Controls.Add(userControl11);
             Margin = new Padding(4, 5, 4, 5);
             MaximizeBox = false;
             MinimizeBox = false;
-            Name = "Form1";
+            Name = "LiftFloors";
             Text = "Lift System";
             WindowState = FormWindowState.Maximized;
             Load += Form1_Load;
@@ -74,5 +100,7 @@ namespace LiftSystemApp
 
         private Floor1 userControl11;
         private Floor2 userControl12;
+        private Button logsButton;
+        private ListBox logsDisplay;
     }
 }
