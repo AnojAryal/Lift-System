@@ -1,6 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
-using LiftSystemApp.Database;
+﻿using LiftSystemApp.Database;
 using LiftSystemApp.Enum;
 using LiftSystemApp.Helper;
 using MySqlConnector;
