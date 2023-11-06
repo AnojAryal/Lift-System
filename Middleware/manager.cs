@@ -14,18 +14,20 @@ namespace LiftSystemApp.Middleware
 
         public Manager(LiftFloors form1, DataAccess dataAccess, MySqlConnection databaseConnection)
         {
+            // Initialize the controls array with floor controls from form1
             this.controls[0] = form1.GetFloor1;
             this.controls[1] = form1.GetFloor2;
 
+            // Store the dataAccess and databaseConnection parameters
             this.dataAcess = dataAccess ?? throw new ArgumentNullException(nameof(dataAccess));
             this.connection = databaseConnection ?? throw new ArgumentNullException(nameof(databaseConnection));
 
-
-
+            // Event handlers for button clicks on both floor controls
             foreach (var item in controls)
             {
                 var floor = item as MainDesign;
 
+                // Event handler for the "Up" button click
                 floor.UpButton.Click += async (object sender, EventArgs e) =>
                 {
                     if (!isMoving)
@@ -52,18 +54,24 @@ namespace LiftSystemApp.Middleware
                     }
                 };
 
-                floor.Floor1Button.Click += async (object sender, EventArgs e) => {
+                // Event handler for the "Floor 1" button click
+                floor.Floor1Button.Click += async (object sender, EventArgs e) =>
+                {
                     await MoveLiftDown();
                 };
 
-                floor.Floor2Button.Click += async (object sender, EventArgs e) => {
+                // Event handler for the "Floor 2" button click
+                floor.Floor2Button.Click += async (object sender, EventArgs e) =>
+                {
                     await MoveLiftUp();
                 };
 
+                // Initialize the initial elevator state
                 InitializeElevatorState();
             }
         }
 
+        // Initialize the elevator state
         private void InitializeElevatorState()
         {
             LiftState.CurrentFloor = controls[0];
@@ -71,13 +79,14 @@ namespace LiftSystemApp.Middleware
             LiftState.Direction = LiftDirection.Up;
         }
 
+        // Method to move the elevator up
         private async Task MoveLiftUp()
         {
             if (!LiftState.CurrentFloor.IsDoorClose)
             {
                 LiftState.CurrentFloor.CloseDoor();
             }
-            
+
             LiftState.Status = LiftStatus.Moving;
             dataAcess.ExecuteQuery("INSERT INTO logs (message) VALUES ('Elevator requested on second floor.')");
             LiftState.Direction = LiftDirection.Up;
@@ -93,7 +102,6 @@ namespace LiftSystemApp.Middleware
             LiftState.Status = LiftStatus.Stopped;
             dataAcess.ExecuteQuery("INSERT INTO logs (message) VALUES ('Elevator Moving up to second floor.')");
 
-
             await Task.Delay(1000);
 
             foreach (var floor in controls)
@@ -108,6 +116,7 @@ namespace LiftSystemApp.Middleware
             LiftState.CurrentFloor.CloseDoor();
         }
 
+        // Method to move the elevator down
         private async Task MoveLiftDown()
         {
             if (!LiftState.CurrentFloor.IsDoorClose)
@@ -117,7 +126,6 @@ namespace LiftSystemApp.Middleware
 
             LiftState.Status = LiftStatus.Moving;
             dataAcess.ExecuteQuery("INSERT INTO logs (message) VALUES ('Elevator requested on first floor.')");
-
             LiftState.Direction = LiftDirection.Down;
 
             foreach (var floor in controls)

@@ -4,10 +4,16 @@ namespace LiftSystemApp.Helper
 {
     public static class LiftState
     {
+        // Store the current floor 
         private static MainDesign? currentFloor;
+
+        // Store the direction in which the elevator is moving (Up or Down).
         private static LiftDirection direction;
+
+        // Store the status of the elevator (Stopped, Moving, etc.).
         private static LiftStatus status;
 
+      
         public static MainDesign CurrentFloor
         {
             set => currentFloor = value;
