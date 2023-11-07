@@ -96,8 +96,8 @@ namespace LiftSystemApp
 
         }
 
-        public Floor1 GetFloor1 => userControl11;
-        public Floor2 GetFloor2 => userControl12;
+        public Floor1 GetFloor1 => mainDisplay1;
+        public Floor2 GetFloor2 => mainDisplay2;
 
     }
 }

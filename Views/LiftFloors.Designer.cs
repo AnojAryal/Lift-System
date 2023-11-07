@@ -30,29 +30,29 @@ namespace LiftSystemApp
         /// </summary>
         private void InitializeComponent()
         {
-            userControl11 = new Floor1();
-            userControl12 = new Floor2();
+            mainDisplay1 = new Floor1();
+            mainDisplay2 = new Floor2();
             logsButton = new Button();
             logsDisplay = new ListBox();
             SuspendLayout();
             // 
-            // userControl11
+            // mainDisplay1
             // 
-            userControl11.Location = new Point(1, 847);
-            userControl11.Margin = new Padding(6, 8, 6, 8);
-            userControl11.Name = "userControl11";
-            userControl11.Size = new Size(775, 837);
-            userControl11.TabIndex = 0;
-            userControl11.Load += userControl11_Load;
+            mainDisplay1.Location = new Point(1, 847);
+            mainDisplay1.Margin = new Padding(6, 8, 6, 8);
+            mainDisplay1.Name = "mainDisplay1";
+            mainDisplay1.Size = new Size(775, 837);
+            mainDisplay1.TabIndex = 0;
+            mainDisplay1.Load += userControl11_Load;
             // 
-            // userControl12
+            // mainDisplay2
             // 
-            userControl12.Location = new Point(1, 0);
-            userControl12.Margin = new Padding(6, 8, 6, 8);
-            userControl12.Name = "userControl12";
-            userControl12.Size = new Size(765, 837);
-            userControl12.TabIndex = 1;
-            userControl12.Load += userControl12_Load_1;
+            mainDisplay2.Location = new Point(1, 0);
+            mainDisplay2.Margin = new Padding(6, 8, 6, 8);
+            mainDisplay2.Name = "mainDisplay2";
+            mainDisplay2.Size = new Size(765, 837);
+            mainDisplay2.TabIndex = 1;
+            mainDisplay2.Load += userControl12_Load_1;
             // 
             // logsButton
             // 
@@ -84,8 +84,8 @@ namespace LiftSystemApp
             ClientSize = new Size(1480, 1050);
             Controls.Add(logsDisplay);
             Controls.Add(logsButton);
-            Controls.Add(userControl12);
-            Controls.Add(userControl11);
+            Controls.Add(mainDisplay2);
+            Controls.Add(mainDisplay1);
             Margin = new Padding(4, 5, 4, 5);
             MaximizeBox = false;
             MinimizeBox = false;
@@ -98,8 +98,8 @@ namespace LiftSystemApp
 
         #endregion
 
-        private Floor1 userControl11;
-        private Floor2 userControl12;
+        private Floor1 mainDisplay1;
+        private Floor2 mainDisplay2;
         private Button logsButton;
         private ListBox logsDisplay;
     }
