@@ -96,7 +96,7 @@ namespace LiftSystemApp.Middleware
                 floor.Indicator.Image = Properties.Resources.indicator_up;
             }
 
-            await Task.Delay(3000);
+            await Task.Delay(4000);
 
             LiftState.CurrentFloor = controls[1];
             LiftState.Status = LiftStatus.Stopped;
@@ -134,7 +134,7 @@ namespace LiftSystemApp.Middleware
             }
 
             await Task.Delay(3000);
-            dataAcess.ExecuteQuery("INSERT INTO logs (message) VALUES ('Elevator Moving up to first floor.')");
+            dataAcess.ExecuteQuery("INSERT INTO logs (message) VALUES ('Elevator Moving down to first floor.')");
 
             LiftState.CurrentFloor = controls[0];
             LiftState.Status = LiftStatus.Stopped;
