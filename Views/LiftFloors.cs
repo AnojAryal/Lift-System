@@ -1,9 +1,7 @@
 using LiftSystemApp.Database;
 using LiftSystemApp.Views;
-using Microsoft.VisualBasic.Logging;
 using MySqlConnector;
 using System.Data;
-using System.Windows.Forms;
 using Timer = System.Windows.Forms.Timer;
 
 namespace LiftSystemApp
