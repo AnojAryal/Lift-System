@@ -60,7 +60,7 @@ namespace LiftSystemApp
             logsButton.Name = "logsButton";
             logsButton.Size = new Size(155, 67);
             logsButton.TabIndex = 2;
-            logsButton.Text = "Logs Details";
+            logsButton.Text = "Show Logs";
             logsButton.UseVisualStyleBackColor = true;
             logsButton.Click += logsButton_Click;
             // 

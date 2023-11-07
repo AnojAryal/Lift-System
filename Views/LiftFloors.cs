@@ -18,7 +18,7 @@ namespace LiftSystemApp
             var databaseConnection = connection.Connect();
             dataAcess = new DataAccess(databaseConnection);
             timer = new Timer();
-            timer.Interval = 2000; // Set the refresh interval (5 seconds in this example).
+            timer.Interval = 5000; // Set the refresh interval (5 seconds in this example).
             timer.Tick += Timer_Tick;
             timer.Start();
 
@@ -28,17 +28,21 @@ namespace LiftSystemApp
 
         private void UpdateLogListBox()
         {
-            string query = "SELECT Message, created FROM logs ORDER BY created DESC"; // Replace with your SQL query
-            DataTable dataTable = dataAcess.ExecuteQuery(query);
-
-            logsDisplay.Items.Clear();
-
-            foreach (DataRow row in dataTable.Rows)
+            if (logsVisible)
             {
-                logsDisplay.Items.Add(row["Message"].ToString());
-                logsDisplay.Items.Add(row["created"].ToString());
+                string query = "SELECT Message, created FROM logs ORDER BY created DESC"; 
+                DataTable dataTable = dataAcess.ExecuteQuery(query);
+
+                logsDisplay.Items.Clear();
+
+                foreach (DataRow row in dataTable.Rows)
+                {
+                    logsDisplay.Items.Add(row["Message"].ToString());
+                    logsDisplay.Items.Add(row["created"].ToString());
+                }
             }
         }
+
         private void Timer_Tick(object sender, EventArgs e)
         {
             // Timer tick event handler; this is called at the specified interval.
@@ -66,10 +70,26 @@ namespace LiftSystemApp
 
         }
 
+        private bool logsVisible = false; // Initially, logs are not visible
+
         private void logsButton_Click(object sender, EventArgs e)
         {
+            if (logsVisible)
+            {
+                // If logs are visible, hide them and change the button text to "Show Logs"
+                logsDisplay.Items.Clear();
+                logsButton.Text = "Show Logs";
+            }
+            else
+            {
+                // If logs are not visible, show them and change the button text to "Hide Logs"
+                UpdateLogListBox();
+                logsButton.Text = "Hide Logs";
+            }
 
+            logsVisible = !logsVisible; // Toggle the logs visibility flag
         }
+
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
