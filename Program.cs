@@ -12,7 +12,7 @@ namespace LiftSystemApp
             ApplicationConfiguration.Initialize();
 
             // Create the main form
-            var form = new LiftFloors();
+            var mainForm = new LiftFloors();
 
             // Establish a database connection
             var connection = new Connection();
@@ -22,10 +22,10 @@ namespace LiftSystemApp
             var dataAccess = new DataAccess(databaseConnection);
 
             // Create and initialize the Manager with the form, DataAccess, and database connection
-            var manager = new Manager(form, dataAccess, databaseConnection);
+            var manager = new Manager(mainForm, dataAccess, databaseConnection);
 
             // Run the application
-            Application.Run(form);
+            Application.Run(mainForm);
         }
     }
 }
